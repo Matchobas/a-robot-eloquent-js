@@ -34,6 +34,6 @@ function buildGraph(edges) {
   return graph;
 }
 
-const roadsGraph = buildGraph(roads);
-console.log(roadsGraph);
-console.log(roads.map(r => r.split('-')));
+export const roadsGraph = buildGraph(roads);
+// console.log(roadsGraph);
+// console.log(roads.map(r => r.split('-')));

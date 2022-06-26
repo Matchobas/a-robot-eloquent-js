@@ -1,11 +1,13 @@
-class VillageState {
+import { roadsGraph } from './roadsGraph.js';
+
+export class VillageState {
   constructor(place, parcels) {
     this.place = place;
     this.parcels = parcels;
   }
 
   move(destination) {
-    if (!roadGraph[this.place].includes(destination)) {
+    if (!roadsGraph[this.place].includes(destination)) {
       return this;
     } else {
       let parcels = this.parcels.map(p => {
