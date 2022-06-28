@@ -1,5 +1,6 @@
 import { randomRobot } from './randomizers.js';
 import { routeRobot } from './routeRobot.js';
+import { goalOrientedRobot } from './goalOrientedRobot.js';
 import { VillageState } from './VillageState.js';
 
 function runRobot(state, robot, memory) {
@@ -19,3 +20,4 @@ function runRobot(state, robot, memory) {
 console.log(!false);
 runRobot(VillageState.random(), randomRobot);
 runRobot(VillageState.random(), routeRobot, []);
+runRobot(VillageState.random(), goalOrientedRobot, []);

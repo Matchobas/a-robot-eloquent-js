@@ -4,11 +4,11 @@ export function findRoute(graph, from, to) {
   for (let i = 0; i < work.length; i++) {
     let { at, route } = work[i];
 
-    for (place of graph[at]) {
+    for (let place of graph[at]) {
       if (place === to) return route.concat(place);
       
       if (!work.some(w => w.at === place)) {
-        work.push({ at: place, route: route.concat[place]})
+        work.push({ at: place, route: route.concat(place)})
       }
     }
   }
