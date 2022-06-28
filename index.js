@@ -16,5 +16,6 @@ function runRobot(state, robot, memory) {
   }
 }
 
+console.log(!false);
 runRobot(VillageState.random(), randomRobot);
 runRobot(VillageState.random(), routeRobot, []);
