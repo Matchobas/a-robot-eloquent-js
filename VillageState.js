@@ -1,3 +1,4 @@
+import { randomPick } from './randomizers.js';
 import { roadsGraph } from './roadsGraph.js';
 
 export class VillageState {
@@ -18,5 +19,21 @@ export class VillageState {
       
       return new VillageState(destination, parcels);
     }
+  }
+
+  static random(parcelCount = 5) {
+    let parcels = [];
+    for (let i = 0; i < parcelCount; i++) {
+      let address = randomPick(Object.keys(roadsGraph));
+      let place;
+
+      do {
+        place = randomPick(Object.keys(roadsGraph));
+      } while (place == address);
+
+      parcels.push({place, address});
+    }
+
+    return new VillageState('Post Office', parcels);
   }
 }
