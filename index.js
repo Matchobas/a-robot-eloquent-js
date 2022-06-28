@@ -1,53 +1,18 @@
+import { randomRobot } from './randomizers.js';
 import { VillageState } from './VillageState.js';
 
-const villageState = new VillageState('Post Office', [
-  {place: "Post Office", address: "Alice's House"},
-  {place: "Alice's House", address: "Shop"},
-  {place: "Shop", address: "Town Hall"},
-  {place: "Post Office", address: "Farm"},
-  {place: "Farm", address: "Alice's House"},
-]);
+function runRobot(state, robot, memory) {
+  for (let turn = 0;; turn++) {
+    if (state.parcels.length == 0) {
+      console.log(`Done in ${turn} turns`);
+      break;
+    }
 
-let next = villageState.move("Alice's House");
-console.log(next.place);
-console.log(next.parcels);
+    let action = robot(state, memory);
+    state = state.move(action.direction);
+    memory = action.memory;
+    console.log(`Moved to ${action.direction}`);
+  }
+}
 
-next = next.move("Bob's House");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Town Hall");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Shop");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Town Hall");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Shop");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Marketplace");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Farm");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Marketplace");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Post Office");
-console.log(next.place);
-console.log(next.parcels);
-
-next = next.move("Alice's House");
-console.log(next.place);
-console.log(next.parcels);
+runRobot(VillageState.random(), randomRobot);
