@@ -5,6 +5,7 @@ export function randomPick(array) {
   return array[choice];
 }
 
+// This is the simple method, only using random values based on the array size
 export function randomRobot(state) {
   return {direction: randomPick(roadsGraph[state.place])};
 }
