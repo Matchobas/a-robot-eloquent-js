@@ -2,12 +2,13 @@ import { randomRobot } from './randomizers.js';
 import { routeRobot } from './routeRobot.js';
 import { goalOrientedRobot } from './goalOrientedRobot.js';
 import { VillageState } from './VillageState.js';
+import { compareRobots } from './compareRobots.js';
 
 function runRobot(state, robot, memory) {
   for (let turn = 0;; turn++) {
     if (state.parcels.length == 0) {
-      console.log(`Done in ${turn} turns`);
-      break;
+      // console.log(`Done in ${turn} turns`);
+      return turn;
     }
 
     let action = robot(state, memory);
@@ -17,7 +18,7 @@ function runRobot(state, robot, memory) {
   }
 }
 
-console.log(!false);
-runRobot(VillageState.random(), randomRobot);
-runRobot(VillageState.random(), routeRobot, []);
-runRobot(VillageState.random(), goalOrientedRobot, []);
+// runRobot(VillageState.random(), randomRobot);
+// runRobot(VillageState.random(), routeRobot, []);
+// runRobot(VillageState.random(), goalOrientedRobot, []);
+compareRobots(runRobot, [], runRobot, []);
