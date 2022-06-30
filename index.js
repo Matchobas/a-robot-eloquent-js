@@ -4,7 +4,7 @@ import { goalOrientedRobot } from './goalOrientedRobot.js';
 import { VillageState } from './VillageState.js';
 import { compareRobots } from './compareRobots.js';
 
-function runRobot(state, robot, memory) {
+export function runRobot(state, robot, memory) {
   for (let turn = 0;; turn++) {
     if (state.parcels.length == 0) {
       // console.log(`Done in ${turn} turns`);
@@ -21,4 +21,4 @@ function runRobot(state, robot, memory) {
 // runRobot(VillageState.random(), randomRobot);
 // runRobot(VillageState.random(), routeRobot, []);
 // runRobot(VillageState.random(), goalOrientedRobot, []);
-compareRobots(runRobot, [], runRobot, []);
+compareRobots(goalOrientedRobot, [], routeRobot, []);
